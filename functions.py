@@ -11,9 +11,8 @@ current_file_path = None  # Глобальная переменная для х�
 text = tk.Text(wnd, wrap=tk.WORD)
 
 
-
 def load_articles():
-    """Загружает список статей из папки"""
+    # Загружает список статей из папки
     listbox.delete(0, tk.END)
     for filename in os.listdir(ARTICLES_DIR):
         if filename.endswith(".txt"):
@@ -21,7 +20,7 @@ def load_articles():
 
 
 def read_article():
-    """Читает и редактирует выбранную статью"""
+    # Читает и редактирует выбранную статью
     global current_file_path
     selected = listbox.curselection()
     if not selected:
@@ -37,7 +36,7 @@ def read_article():
 
 
 def save_article():
-    """Сохраняет изменения в статье"""
+    # Сохраняет изменения в статье
     if current_file_path:
         with open(current_file_path, "w", encoding="utf-8") as file:
             file.write(text.get("1.0", tk.END))
@@ -47,7 +46,7 @@ def save_article():
 
 
 def create_article():
-    """Создает новую статью"""
+    # Создает новую статью
     article_name = simpledialog.askstring("New entry", "Enter a new entry")
     if not article_name:
         return
@@ -60,7 +59,7 @@ def create_article():
 
 
 def delete_article():
-    """Удаляет выбранную статью"""
+    # Удаляет выбранную статью
     selected = listbox.curselection()
     if not selected:
         messagebox.showwarning("Error", "Choose entry to delete")
